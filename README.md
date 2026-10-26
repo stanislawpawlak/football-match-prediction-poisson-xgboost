@@ -22,7 +22,7 @@ An end-to-end machine learning and statistical modeling pipeline designed to for
 
 ##  Dataset & Preprocessing Pipeline
 
-- **Raw Data:** 230,557 matches from 2000 to 2025 across 37 global divisions (sourced from `football-data.co.uk`).
+- **Raw Dataset:** 230,557 historical matches spanning 2000–2025 across 37 global divisions (sourced from the Club-Football-Match-Data repository).
 - **Data Filtering & Leakage Elimination:**
   - Removed all post-match statistics (shots, fouls, corners, cards, half-time results, etc.) to prevent data leakage.
   - Excluded `MatchTime` (>50% missing values) and 21 niche leagues with >50% feature missingness (retaining 16 core European leagues including Premier League, La Liga, Serie A, Bundesliga and Ekstraklasa to maintain consistency with the topic).
