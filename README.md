@@ -104,3 +104,11 @@ Evaluated on **13,431 holdout test matches (2023–2025)**:
 4. **League Predictability Disparity:**
    - **Highly Predictable Leagues:** Dutch Eredivisie (`N1`) & Portuguese Primeira Liga (`P1`) achieve **LogLoss ~0.918** and **Accuracy ~57-58%**, likely driven by clear team quality stratification.
    - **Volatile / Stochastic Leagues:** Italian Serie B (`I2`) & Spanish Segunda División (`SP2`) exhibit **LogLoss ~1.065** and **Accuracy ~42%**, potentially due to tight parity and draw frequency.
+  
+## Data Source & Acknowledgements
+
+The historical match data utilized in this project was sourced from the [Club-Football-Match-Data](https://github.com/xgabora/Club-Football-Match-Data) repository. Per the author's request, the original dataset is cited as follows:
+
+> **Gábor, A. (2026).** *Club Football Match Data*. Retrieved from https://github.com/xgabora/Club-Football-Match-Data/
+> 
+> **Author:** Adam Gábor | **ORCID:** [0009-0001-9252-5976](https://orcid.org/0009-0001-9252-5976) | **Affiliation:** Slovak University of Technology in Bratislava
