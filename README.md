@@ -98,9 +98,9 @@ Evaluated on **13,431 holdout test matches (2023–2025)**:
 
 ## Key Findings & Insights
 
-1. **Elo Rating Dominance:** Permutation Feature Importance proves that `EloDifference` and `EloAdvantage` account for over **80% of total predictive power** across all ML algorithms.
-2. **Probability Calibration:** Non-linear ML models (XGBoost & Random Forest) achieve the lowest LogLoss and Brier Score, offering superior probability calibration despite similar accuracy to linear models.
+1. **Elo Rating Dominance:** Permutation Feature Importance proves that `EloDifference` and `EloAdvantage` account for most of total pedictive power across all ML algorithms.
+2. **Probability Calibration:** Non-linear ML models (XGBoost & Random Forest) achieve the lowest LogLoss and Brier Score, offering superior probability calibration despite similar accuracy to linear models for this dataset.
 3. **The Draw Prediction Bottleneck:** Hard classification ($\text{argmax}$) struggles to predict draws ($X$), as draw probabilities rarely exceed the home win threshold—underlining the necessity of soft probabilistic predictions for sports betting value identification.
 4. **League Predictability Disparity:**
-   - **Highly Predictable Leagues:** Dutch Eredivisie (`N1`) & Portuguese Primeira Liga (`P1`) achieve **LogLoss ~0.918** and **Accuracy ~57-58%** due to clear team quality stratification.
-   - **Volatile / Stochastic Leagues:** Italian Serie B (`I2`) & Spanish Segunda División (`SP2`) exhibit **LogLoss ~1.065** and **Accuracy ~42%** due to tight parity and draw frequency.
+   - **Highly Predictable Leagues:** Dutch Eredivisie (`N1`) & Portuguese Primeira Liga (`P1`) achieve **LogLoss ~0.918** and **Accuracy ~57-58%**, likely driven by clear team quality stratification.
+   - **Volatile / Stochastic Leagues:** Italian Serie B (`I2`) & Spanish Segunda División (`SP2`) exhibit **LogLoss ~1.065** and **Accuracy ~42%**, potentially due to tight parity and draw frequency.
