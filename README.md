@@ -77,10 +77,7 @@ w^*_{jmc} = -\frac{\sum_{i \in I_{jmc}} g_{imc}}{\sum_{i \in I_{jmc}} h_{imc} + 
 
 Where g<sub>imc</sub> = p<sub>ic</sub> - y<sub>ic</sub> (prediction error) and h<sub>imc</sub> = 2 p<sub>ic</sub>(1 - p<sub>ic</sub>) (diagonal upper bound of Hessian).
 
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-
-## 📈 Benchmark Results & Model Comparison
+##  Benchmark Results & Model Comparison
 
 Evaluated on **13,431 holdout test matches (2023–2025)**:
 
@@ -88,22 +85,22 @@ Evaluated on **13,431 holdout test matches (2023–2025)**:
 | :--- | :---: | :---: | :---: | :--- |
 | **XGBoost (GPU CUDA)** | 50.44% | **1.0003** | **0.5979** | `max_depth=4`, `lr=0.113`, `subsample=0.71`, `colsample=0.86`, `gamma=2.57` |
 | **Random Forest (cuML)** | 50.45% | **1.0006** | **0.5981** | `n_estimators=152`, `max_depth=6`, `max_features=0.55`, `max_samples=0.76` |
-| **Poisson (Dixon-Coles)** | 50.45% | **1.0016** | **0.5987** | \\(\hat{\rho} = -0.06\\), 2-Stage MLE |
+| **Poisson (Dixon-Coles)** | 50.45% | **1.0016** | **0.5987** | $\hat{\rho} = -0.06$, 2-Stage MLE |
 | **Decision Tree** | 50.35% | **1.0016** | **0.5987** | `max_depth=4`, `min_samples_split=158`, `min_samples_leaf=51` |
-| **Logistic Reg (cuML)** | **50.58%** | **1.0015** | **0.5987** | `penalty=elasticnet`, \\(C=0.011\\), `l1_ratio=0.60` |
-| **MNLogit (statsmodels)** | **50.55%** | **1.0021** | **0.5990** | Unregularized Multiclass Logistic Regression (\\(p\\)-values computed) |
-| **Pure Elo Baseline** | 50.48% | 1.0021 | 0.5990 | Single \\(Home/Away Elo\\) Logistic Regression |
+| **Logistic Reg (cuML)** | **50.58%** | **1.0015** | **0.5987** | `penalty=elasticnet`, $C=0.011$, `l1_ratio=0.60` |
+| **MNLogit (statsmodels)** | **50.55%** | **1.0021** | **0.5990** | Unregularized Multiclass Logistic Regression ($p$-values computed)|
+| **Pure Elo Baseline** | 50.48% | 1.0021 | 0.5990 | Single Home/Away Elo Logistic Regression |
 | **Prior Baseline (Prior)** | 44.17% | 1.0730 | 0.6489 | Empirical class distribution predictor |
-| **Uniform Random (33/33/33)** | 33.61% | 1.0986 | 0.6667 | \\(1/3\\) constant probability |
+| **Uniform Random (33/33/33)** | 33.61% | 1.0986 | 0.6667 | $\frac{1}{3}$ constant probability |
 | **Always Home Win** | 44.17% | 20.1218 | 1.1165 | Naive hard classification |
 
 ---
 
-## 🔍 Key Findings & Insights
+## Key Findings & Insights
 
 1. **Elo Rating Dominance:** Permutation Feature Importance proves that `EloDifference` and `EloAdvantage` account for over **80% of total predictive power** across all ML algorithms.
 2. **Probability Calibration:** Non-linear ML models (XGBoost & Random Forest) achieve the lowest LogLoss and Brier Score, offering superior probability calibration despite similar accuracy to linear models.
-3. **The Draw Prediction Bottleneck:** Hard classification (\\(\text{argmax}\\)) struggles to predict draws (\\(X\\)), as draw probabilities rarely exceed the home win threshold—underlining the necessity of soft probabilistic predictions for sports betting value identification.
+3. **The Draw Prediction Bottleneck:** Hard classification ($\text{argmax}$) struggles to predict draws ($X$), as draw probabilities rarely exceed the home win threshold—underlining the necessity of soft probabilistic predictions for sports betting value identification.
 4. **League Predictability Disparity:**
    - **Highly Predictable Leagues:** Dutch Eredivisie (`N1`) & Portuguese Primeira Liga (`P1`) achieve **LogLoss ~0.918** and **Accuracy ~57-58%** due to clear team quality stratification.
    - **Volatile / Stochastic Leagues:** Italian Serie B (`I2`) & Spanish Segunda División (`SP2`) exhibit **LogLoss ~1.065** and **Accuracy ~42%** due to tight parity and draw frequency.
